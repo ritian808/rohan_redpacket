@@ -1,0 +1,98 @@
+/* 改变间距计算方式 */
+*{
+    box-sizing: border-box;
+}
+
+/* 设置间距和字体 */
+body{
+    margin: .5em;
+    font: lighter 16px "微软雅黑";
+}
+
+/* 标题变细 */
+h1, h2, h3{
+    font-weight: lighter;
+}
+
+/* 图片响应式 */
+img{
+    height: auto;
+    max-width: 100%;
+}
+/*接下来给红包主体添加 position: relative 属性
+就可以给上面的封口进行重新定位了。为了防止内容溢出
+我们加上一句 overflow: hidden 属性即可。
+最后设置字体、背景颜色、宽高和圆角就差不多完工了。*/
+.red-packet{
+    color: #fff;
+    padding: 1em;
+    height: 35em;
+    margin: auto;
+    max-width: 25em;
+    overflow: hidden;
+    position: relative;
+    border-radius: 1em;
+    background: #c40b00;
+}
+/*给封口设置相对定位，给 100% 的圆角，并且设置背景、高度。*/
+.red-packet header{
+    top: -14.5em;
+    left: 0;
+    right: 0;
+    height: 25em;
+    position: absolute;
+    border-radius: 100%;
+    background: #b00b00;
+}
+/*编写头像也是用相对定位解决，再给 img 元素加上圆角和边框就完成了*/
+.red-packet img{
+    left: 0;
+    right: 0;
+    bottom: -2em;
+    margin: auto;
+    max-width: 5em;
+    position: absolute;
+    border-radius: 100%;
+    border: .25em solid #fff;
+}
+/*随后就是内容区了，只需要加一个 margin 即可填充上方的间距。*/
+.red-packet main{
+    margin-top: 15em;
+    text-align: center;
+}
+
+/*最后设置一下开红包的按钮，整体基本就完成咯！*/
+.red-packet .author{
+    opacity: .7;
+}
+.red-packet .open{
+    outline: 0;
+    width: 3em;
+    height: 3em;
+    color: #fff;
+    border: none;
+    display: block;
+    font-size: 2em;
+    cursor: pointer;
+    margin: 1em auto;
+    background: #ffb03a;
+    border-radius: 100%;
+    transition: background .3s, transform .3s;
+}
+.red-packet .open:hover{
+    transform: scale(1.1);
+}
+.red-packet .open:active{
+    background: #eba534;
+}
+/*为了增加逼格，我们还可以给这个红包增加一个动画。*/
+@keyframes red-packet{
+    from{
+        opacity: 0;
+        transform: scale(0);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
